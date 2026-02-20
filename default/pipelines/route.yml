@@ -1,0 +1,32 @@
+id: default
+groups: {}
+comments:
+  - id: fzKxka
+    comment: Define DataType Var in Knowledge > Variable > datatype default
+      value='sailpoint:iiq:audit'
+    index: 0
+routes:
+  - id: default
+    name: SailPoint Identities
+    final: true
+    disabled: false
+    pipeline: passthru
+    description: Define DataType Var in Knowledge > Variable > datatype default
+      value='sailpoint:iiq:audit'
+    enableOutputExpression: false
+    outputExpression: null
+    filter: C.vars['datatype-identities']
+    clones: []
+    output: default
+  - id: 5LbDWI
+    name: SailPoint Events
+    final: true
+    disabled: false
+    pipeline: passthru
+    description: Define DataType Var in Knowledge > Variable > datatype default
+      value='sailpoint:iiq:audit'
+    enableOutputExpression: false
+    outputExpression: null
+    filter: C.vars['datatype-events']
+    clones: []
+    output: default

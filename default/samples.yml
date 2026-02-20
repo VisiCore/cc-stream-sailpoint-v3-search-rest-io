@@ -1,0 +1,60 @@
+7IvrDH:
+  sampleName: accessProfiles.log.json
+  created: 1762979660087
+  size: 1462
+  numEvents: 1
+R2z1iz:
+  sampleName: accountActivities.log.json
+  created: 1762979750148
+  size: 3337
+  numEvents: 1
+rBQhoo:
+  sampleName: events.log.json
+  created: 1762979767894
+  size: 1270
+  numEvents: 1
+uVHDtA:
+  sampleName: identities.log.json
+  created: 1762979785514
+  size: 13652
+  numEvents: 1
+u5F3hk:
+  sampleName: roles.log.json
+  created: 1762979799055
+  size: 1013
+  numEvents: 1
+T9vYht:
+  sampleName: query-fields.log.json
+  created: 1762979816476
+  size: 8349
+  numEvents: 1
+qQQsYZ:
+  sampleName: query-timeZone.log.json
+  created: 1762979831936
+  size: 13610
+  numEvents: 1
+bx7zCh:
+  sampleName: query-innerHit.log.json
+  created: 1762979851102
+  size: 1823
+  numEvents: 2
+5HI3Eh:
+  sampleName: filter-exists.log.json
+  created: 1762979886644
+  size: 8810
+  numEvents: 1
+zUlzsv:
+  sampleName: filter-range.log.json
+  created: 1762979908201
+  size: 12990
+  numEvents: 1
+eXS7eB:
+  sampleName: filter-terms.log.json
+  created: 1762979925465
+  size: 8759
+  numEvents: 1
+BSgooy:
+  sampleName: entitlements.log.json
+  created: 1762980053784
+  size: 1018
+  numEvents: 1

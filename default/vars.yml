@@ -1,0 +1,25 @@
+datatype:
+  type: any
+  value: "'sailpoint:iiq:audit'"
+  lib: custom
+  tags: sailpoint,rest,vct
+endpoint_host:
+  type: string
+  value: "'endpoint_host'"
+  tags: sailpoint,vct,rest
+  lib: custom
+client_id:
+  type: string
+  value: "'client_id'"
+  tags: vct,sailpoint,rest
+  lib: custom
+datatype-events:
+  type: string
+  value: "'sailpoint:iiq:events'"
+  lib: custom
+  tags: sailpoint,rest,vct
+datatype-identities:
+  type: string
+  value: "'sailpoint:iiq:identities'"
+  lib: custom
+  tags: sailpoint,rest,vct
