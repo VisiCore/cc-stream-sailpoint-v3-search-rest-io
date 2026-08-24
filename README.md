@@ -40,7 +40,7 @@ Andrew Hendrix - Andrewh@VisiCoreTech.com
 
 Paul Stout - Paul@VisiCoreTech.com
 
-Stacy Simmons - ssimmons@cribl.io
+Brian Yearwood - byearwood@cribl.io
 
 ## **Release Notes**
 
