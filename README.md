@@ -46,6 +46,12 @@ Stacy Simmons - ssimmons@cribl.io
 
 ---
 
+Version 1.1.2 - 2026-08-23
+  - Events Collector: Incremental collection - the search query now filters on created time using scheduled collection state tracking, so each run only pulls events created since the last run.
+  - Events Collector: Changed pagination from response body (searchAfter cursor) to request offset (offset/limit parameters, 1000 per page) and enabled stop on empty results.
+  - Events Collector: Sort changed from id to +created to support the state tracking watermark.
+  - Events Collector: Added latest: now to the schedule time range and removed the hardcoded limit/count query string from the collect URL.
+
 Version 1.1.1 - 2026-02-19
   - Events Collector fix: Resolved a connection failure caused by a missing top-level domain (.com) in the authentication URL.
   - Location: LoginUrl configuration.

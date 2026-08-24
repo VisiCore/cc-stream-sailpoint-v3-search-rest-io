@@ -123,6 +123,7 @@ _vct_rest_sailpoint_v3_search_events:
         enabled: true
       timestampTimezone: UTC
       earliest: -5m@m
+      latest: now
     enabled: false
   streamtags: []
   workerAffinity: false
@@ -132,28 +133,26 @@ _vct_rest_sailpoint_v3_search_events:
         discoverType: none
       collectMethod: post_with_body
       pagination:
-        type: response_body
+        type: request_offset
+        offsetField: offset
+        limitField: limit
+        limit: 1000
         maxPages: 0
+        zeroIndexed: false
         pageField: startIndex
         sizeField: count
         size: 1000
-        zeroIndexed: false
-        offsetField: startIndex
-        limitField: count
-        limit: 50
-        offset: 1
+        offset: 0
         page: 1
-        totalRecordField: totalResults
-        attribute:
-          - at(-1).id
+        attribute: []
       authentication: oauth
       timeout: 0
       useRoundRobinDns: false
-      disableTimeFilter: false
+      disableTimeFilter: true
       decodeUrl: true
       rejectUnauthorized: false
       captureHeaders: false
-      stopOnEmptyResults: false
+      stopOnEmptyResults: true
       safeHeaders: []
       retryRules:
         type: backoff
@@ -168,6 +167,7 @@ _vct_rest_sailpoint_v3_search_events:
         retryConnectTimeout: false
         retryConnectReset: false
         retryHeaderName: retry-after
+      microsoftGraphDelta: {}
       __scheduling:
         stateTracking: {}
       loginUrl: "`https://${C.vars['endpoint_host']}.api.identitynow.com/oauth/token`"
@@ -181,8 +181,7 @@ _vct_rest_sailpoint_v3_search_events:
       authRequestHeaders:
         - name: scope
           value: "'sp:scope:all'"
-      collectUrl: "`https://${C.vars['endpoint_host']}.api.identitynow.com/v3/search?\
-        limit=1000&count=true`"
+      collectUrl: "`https://${C.vars['endpoint_host']}.api.identitynow.com/v3/search`"
       collectRequestHeaders: []
       collectRequestParams:
         - name: limit
@@ -193,29 +192,14 @@ _vct_rest_sailpoint_v3_search_events:
           value: C.vars['client_id']
         - name: grant_type
           value: "'client_credentials'"
-      collectBody: "JSON.stringify({\r
-
-        \   indices: [\r
-
-        \      \"events\"\r
-
-        \   ],\r
-
-        \   query: {\r
-
-        \      query: \"type:*\"\r
-
-        \   },\r
-
-        \   sort: [\r
-
-        \      \"id\"\r
-
-        \   ],\r
-
-        \   searchAfter: __e['at(-1).id'] !== NULL ? [__e['at(-1).id']] : NULL\r
-
-        })\r\n"
+      collectBody: |-
+        JSON.stringify({
+          indices: ["events"],
+          query: {
+            query: `type:* AND created:[${Math.floor(state.latestTime ? (state.latestTime*1000)+1 : earliest*1000)} TO ${Math.floor(latest*1000 || Date.now())}]`
+          },
+          sort: ["+created"]
+        })
     destructive: false
     encoding: utf8
     type: rest
